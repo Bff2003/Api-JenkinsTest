@@ -3,15 +3,15 @@ pipeline {
     agent any
 
     environment {
-        PYTHON_HOME = 'C:/Program Files/Python310'
+        PYTHON_HOME = '%programfiles%/Python310'
         PATH = "${env.PYTHON_HOME};${env.PATH}"
     }
 
     stages {
         stage('Run Api') {
             steps {
-                echo "${env.PYTHON_HOME}/python.exe Api.py"
-                sh "${env.PYTHON_HOME}/python.exe Api.py"
+                echo "${PYTHON_HOME}/python.exe Api.py"
+                sh "${PYTHON_HOME}/python.exe Api.py"
             }
         }
         stage('Api Test') {
