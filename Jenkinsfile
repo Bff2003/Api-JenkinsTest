@@ -11,10 +11,18 @@ pipeline {
             }
         }
         
-        stage('Turn on') {
+        stage('Test') {
             steps {
                 dir('api') {
-                    sh 'npm start'
+                    sh 'npm start test'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                dir('api') {
+                    sh 'npm start &'
                 }
             }
         }
