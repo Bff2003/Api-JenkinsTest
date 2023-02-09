@@ -2,27 +2,20 @@
 pipeline {
     agent any
 
-    environment {
-        PYTHON_HOME = 'C:/"Program Files"/Python310'
-        PATH = "${env.PYTHON_HOME};${env.PATH}"
-    }
-
     stages {
-        stage('Run Api') {
+        stage('Build') {
             steps {
-                echo "${PYTHON_HOME}/python.exe Api.py"
-                sh "${PYTHON_HOME}/python.exe Api.py"
+                dir('api') {
+                    sh 'npm install'
+                }
             }
         }
-        stage('Api Test') {
+        
+        stage('Turn on') {
             steps {
-                echo 'Testing..'
-                sh 'python ApiTest.py'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying..'
+                dir('api') {
+                    sh 'npm start'
+                }
             }
         }
     }
