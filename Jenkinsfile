@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Run Api') {
             steps {
-                echo "${env.PYTHON_HOME};${env.PATH}"
+                echo "${env.PYTHON_HOME};"
                 // sh 'python Api.py'
             }
         }
