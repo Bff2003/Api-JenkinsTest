@@ -17,7 +17,7 @@ pipeline {
         stage('Api Test') {
             steps {
                 echo 'Testing..'
-                sh 'python ApiTest.py'
+                sh '${PYTHON_HOME} ApiTest.py'
             }
         }
         stage('Deploy') {
