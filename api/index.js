@@ -19,7 +19,7 @@ function test() {
     console.log('Inside test function');
     request('http://localhost:8081/helloWorld', function (error, response, body) {
         expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Hello Worl');
+        expect(body).to.equal('Hello World');
     })
 
     request('http://localhost:8081/json', function (error, response, body) {
@@ -34,6 +34,7 @@ var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
+   console.log('PID: ' + process.pid);
 
    if (args[0] === 'test') {
         console.log('test mode');
