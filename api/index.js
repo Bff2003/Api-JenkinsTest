@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var assert = require('assert');
+var {expect} = require('chai');
 var request = require('request');
 
 // get params of node run command
@@ -17,13 +18,13 @@ app.get('/json', function (req, res) {
 function test() {
     console.log('Inside test function');
     request('http://localhost:8081/helloWorld', function (error, response, body) {
-        assert.equal(200, response.statusCode);
-        assert.equal('Hello Worl', body);
+        expect(response.statusCode).to.equal(200);
+        expect(body).to.equal('Hello Worl');
     })
 
     request('http://localhost:8081/json', function (error, response, body) {
-        assert.equal(200, response.statusCode);
-        assert.equal('{"message":"Hello World"}', body);
+        expect(response.statusCode).to.equal(200);
+        expect(body).to.equal('{"message":"Hello World"}');
     })
 
     console.log('Test completed');
@@ -37,6 +38,9 @@ var server = app.listen(8081, function () {
    if (args[0] === 'test') {
         console.log('test mode');
         test();
-        process.exit(0);
+
+        setTimeout(() => {
+            process.exit(0);
+        }, 2000);
    }
 })
