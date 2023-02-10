@@ -18,7 +18,7 @@ function test() {
     console.log('Inside test function');
     request('http://localhost:8081/helloWorld', function (error, response, body) {
         assert.equal(200, response.statusCode);
-        assert.equal('Hello World', body);
+        assert.equal('Hello Worl', body);
     })
 
     request('http://localhost:8081/json', function (error, response, body) {
