@@ -19,7 +19,7 @@ function test() {
     console.log('Inside test function');
     request('http://localhost:8081/helloWorld', function (error, response, body) {
         expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Hello Worl');
+        expect(body).to.equal('Hello World');
     })
 
     request('http://localhost:8081/json', function (error, response, body) {
