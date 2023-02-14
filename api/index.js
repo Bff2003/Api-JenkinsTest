@@ -19,7 +19,7 @@ function test() {
     console.log('Inside test function');
     request('http://localhost:8081/helloWorld', function (error, response, body) {
         expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Hello World');
+        expect(body).to.equal('Hello Worl');
     })
 
     request('http://localhost:8081/json', function (error, response, body) {
@@ -40,7 +40,7 @@ var server = app.listen(8081, function () {
         console.log('test mode');
         test();
 
-        setTimeout(() => {
+        setTimeout(() => { // wait for test to complete
             process.exit(0);
         }, 2000);
    }
